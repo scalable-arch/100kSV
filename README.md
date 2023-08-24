@@ -60,7 +60,6 @@ https://www.synopsys.com/dw/buildingblock.php
 - Weighted round-robin arbiter
 - parameterized arbiter
 - Two-level arbiter
-- 1 million queue arbiter
 
 ## FSM
 
