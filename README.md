@@ -7,6 +7,7 @@
 - Half-adder
 - Full-adder
 - 2:1 mux
+- 1:2 demux
 - address decoder
 - Subtractor
 - barrel shifter
@@ -26,19 +27,19 @@
 - async FIFO
 
 ## Arbiter
--- Fixed-priority arbiter
--- Round-robin arbiter
--- Weighted round-robin arbiter
--- parameterized arbiter
--- Two-level arbiter
--- 1 million queue arbiter
+- Fixed-priority arbiter
+- Round-robin arbiter
+- Weighted round-robin arbiter
+- parameterized arbiter
+- Two-level arbiter
+- 1 million queue arbiter
 
 ## FSM
 
--- Traffic Light Controller
--- Digital lock
--- Mealy machine
--- Moore machine
+- Mealy machine
+- Moore machine
+- Traffic Light Controller
+- Digital lock
 
 ## Test Bench
 
@@ -50,7 +51,8 @@
 
 # Functional Units
 
-- Booth multiplier
+- Multiply-accumulator
+- Booth's multiplier
 - Instruction Fetch
 - Instructino Decode
 - Arithmetic Logical Unit
@@ -91,6 +93,12 @@
 ## AXI DMA (pipelined)
 
 ## Scatter-Gather DMA
+
+## Credit control
+
+## CRC
+
+## ECC
 
 ## Synchronizer
 
