@@ -40,12 +40,11 @@
 -- Mealy machine
 -- Moore machine
 
-## Synchronizer
+## Test Bench
 
--- 1-bit synchronizer
--- multi-bit synchronizer
--- asynchronous FIFO
--- reset synchronizer
+-- clock generation
+-- reset generation
+-- interface
 
 # Computer Architecture
 
@@ -92,3 +91,11 @@
 ## AXI DMA (pipelined)
 
 ## Scatter-Gather DMA
+
+## Synchronizer
+
+-- 1-bit synchronizer
+-- multi-bit synchronizer
+-- asynchronous FIFO
+-- reset synchronizer
+
