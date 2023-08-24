@@ -68,6 +68,7 @@ https://www.synopsys.com/dw/buildingblock.php
 - Traffic Light Controller
 - Digital lock
 
+## Etc.
 ## Test Bench
 
 -- clock generation
@@ -79,7 +80,6 @@ https://www.synopsys.com/dw/buildingblock.php
 # Functional Units
 
 - Multiply-accumulator
-- Booth's multiplier
 - Instruction Fetch
 - Instructino Decode
 - Arithmetic Logical Unit
