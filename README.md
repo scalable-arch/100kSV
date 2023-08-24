@@ -10,6 +10,9 @@ https://www.synopsys.com/dw/buildingblock.php
 - XOR gate
 - AND-OR-Inverter
 - OR-AND-Inverter
+- Karnaugh Map
+- Sum-Of-Products
+- Product-Of-Sums
 - Half-adder
 - Full-adder
 - 2:1 mux
