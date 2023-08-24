@@ -1,5 +1,7 @@
 # 100kSV
 
+100K lines of SystemVerilog to be a Computer Architect or VLSI front-end designer.
+
 # Structural Verilog
 - XOR gate
 - Half-adder
