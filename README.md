@@ -16,17 +16,19 @@ https://www.synopsys.com/dw/buildingblock.php
 - XNOR2
 - AND-OR-Inverter
 - OR-AND-Inverter
+- 2:1 Mux
+- 1:2 demux
 
 # Structural Verilog (Gate-level)
 - XOR2
 - XNOR2
+- 2:1 mux
+- 1:2 demux
+- Half-adder
+- Full-adder
 - Karnaugh Map
 - Sum-Of-Products
 - Product-Of-Sums
-- Half-adder
-- Full-adder
-- 2:1 mux
-- 1:2 demux
 - address decoder
 - barrel shifter
 
