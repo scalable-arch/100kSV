@@ -7,11 +7,11 @@ Synopsys DesignWare Building Blocks
 https://www.synopsys.com/dw/buildingblock.php
 
 # Structural Verilog (Transistor-level)
-- Inverter
-- NAND2
-- NOR2
-- AND2
-- NOR2
+- [Inverter](https://github.com/scalable-arch/100kSV/tree/main/m0000_TR_INV)
+- [NAND2](https://github.com/scalable-arch/100kSV/tree/main/m0001_TR_NAND2)
+- [NOR2](https://github.com/scalable-arch/100kSV/tree/main/m0002_TR_NOR2)
+- [AND2](https://github.com/scalable-arch/100kSV/tree/main/m0003_TR_AND2)
+- [OR2](https://github.com/scalable-arch/100kSV/tree/main/m0004_TR_OR2)
 - XOR2
 - XNOR2
 - AND-OR-Inverter
