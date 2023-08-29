@@ -6,7 +6,7 @@
 Synopsys DesignWare Building Blocks
 https://www.synopsys.com/dw/buildingblock.php
 
-# Structural Verilog (Transistor-level)
+# Module 1: Structural Verilog (Transistor-level)
 - [Inverter](https://github.com/scalable-arch/100kSV/tree/main/m0000_TR_INV)
 - [NAND2](https://github.com/scalable-arch/100kSV/tree/main/m0001_TR_NAND2)
 - [NOR2](https://github.com/scalable-arch/100kSV/tree/main/m0002_TR_NOR2)
@@ -19,7 +19,7 @@ https://www.synopsys.com/dw/buildingblock.php
 - 2:1 Mux
 - 1:2 demux
 
-# Structural Verilog (Gate-level)
+# Module 2: Structural Verilog (Gate-level)
 - XOR2
 - XNOR2
 - 2:1 mux
@@ -31,6 +31,8 @@ https://www.synopsys.com/dw/buildingblock.php
 - Product-of-Sums
 - Address decoder
 - Barrel shifter
+
+# Module 3: Structural Verilog (Block-level)
 
 # Arithmetic components
 - 4-bit adder (ripple carry)
