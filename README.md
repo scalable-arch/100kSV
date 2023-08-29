@@ -7,7 +7,7 @@ Synopsys DesignWare Building Blocks
 https://www.synopsys.com/dw/buildingblock.php
 
 # Structural Verilog (Transistor-level)
-- INV
+- Inverter
 - NAND2
 - NOR2
 - AND2
