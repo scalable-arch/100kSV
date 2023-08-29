@@ -1,0 +1,2 @@
+XOR2_TB.sv
+XOR2.sv
