@@ -27,10 +27,10 @@ https://www.synopsys.com/dw/buildingblock.php
 - Half-adder
 - Full-adder
 - Karnaugh Map
-- Sum-Of-Products
-- Product-Of-Sums
-- address decoder
-- barrel shifter
+- Sum-of-Products
+- Product-of-Sums
+- Address decoder
+- Barrel shifter
 
 # Arithmetic components
 - 4-bit adder (ripple carry)
