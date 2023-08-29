@@ -1,6 +1,6 @@
 # 100kSV
 
-100K lines of SystemVerilog to be a Computer Architect or VLSI front-end designer.
+100K lines of SystemVerilog to be a Computer Architect or VLSI front-end expert.
 
 
 Synopsys DesignWare Building Blocks
