@@ -1,2 +1,2 @@
-NAND2_TB.sv
-NAND2.sv
+INV_TB.sv
+INV.sv

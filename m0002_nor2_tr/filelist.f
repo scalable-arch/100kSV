@@ -1,0 +1,2 @@
+NOR2_TB.sv
+NOR2.sv
