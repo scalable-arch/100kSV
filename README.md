@@ -6,10 +6,20 @@
 Synopsys DesignWare Building Blocks
 https://www.synopsys.com/dw/buildingblock.php
 
-# Structural Verilog
-- XOR gate
+# Structural Verilog (Transistor-level)
+- INV
+- NAND2
+- NOR2
+- AND2
+- NOR2
+- XOR2
+- XNOR2
 - AND-OR-Inverter
 - OR-AND-Inverter
+
+# Structural Verilog (Gate-level)
+- XOR2
+- XNOR2
 - Karnaugh Map
 - Sum-Of-Products
 - Product-Of-Sums
