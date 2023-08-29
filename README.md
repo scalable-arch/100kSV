@@ -34,6 +34,12 @@ https://www.synopsys.com/dw/buildingblock.php
 
 # Module 3: Structural Verilog (Block-level)
 
+# Module 4: Behavioral Verilog (Combinational)
+
+# Module 5: Behavioral Verilog (Finite State Machine)
+
+# Module 6: Behavioral Verilog (Memory elements)
+
 # Arithmetic components
 - 4-bit adder (ripple carry)
 - 4-bit adder (carry look-ahead)
