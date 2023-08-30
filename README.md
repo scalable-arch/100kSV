@@ -10,11 +10,11 @@ https://www.synopsys.com/dw/buildingblock.php
 https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 1: Structural SystemVerilog (Transistor-level)
-- [```Inverter```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-INV)
-- [```NAND2```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-NAND2)
-- [```NOR2```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-NOR2)
-- [```AND2```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-AND2)
-- [```OR2```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-OR2)
+- [```Inverter```](https://github.com/scalable-arch/100kSV/tree/main/TR/INV)
+- [```NAND2```](https://github.com/scalable-arch/100kSV/tree/main/TR/NAND2)
+- [```NOR2```](https://github.com/scalable-arch/100kSV/tree/main/TR/NOR2)
+- [```AND2```](https://github.com/scalable-arch/100kSV/tree/main/TR/AND2)
+- [```OR2```](https://github.com/scalable-arch/100kSV/tree/main/TR/OR2)
 - XOR2
 - XNOR2
 - AND-OR-Inverter
