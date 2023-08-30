@@ -49,8 +49,8 @@ https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 6: Basic TestBench
 
-- clock generation
-- reset generation
+- Clock generation
+- Reset generation
 - I/O
 - interface
 
