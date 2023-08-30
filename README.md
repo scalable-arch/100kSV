@@ -65,6 +65,7 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Narrower FIFO
 - Wider FIFO
 - async FIFO
+- Register slice
 
 # Module 8: Design Components (Arbiter)
 - Fixed-priority arbiter
