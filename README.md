@@ -55,8 +55,8 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - interface
 
 # Module 7: Design Components (FIFO)
-- Register-based Show-ahead FIFO
-- Parameterized FIFO
+- Simple FIFO
+- [```Parameterized FIFO```](https://github.com/scalable-arch/100kSV/tree/main/FIFO/FIFO2)
 - SRAM-based show-ahead FIFO
 - SRAM-based normal (non show-ahead) FIFO
 - FIFO array based on SRAM
