@@ -1,6 +1,6 @@
 # 100kSV
 
-**100K lines of SystemVerilog** to be a Computer Architect or VLSI front-end expert.
+**100k lines of SystemVerilog** to be a Computer Architect or VLSI front-end expert.
 
 
 Resources:
