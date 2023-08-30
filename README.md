@@ -3,8 +3,11 @@
 100K lines of SystemVerilog to be a Computer Architect or VLSI front-end expert.
 
 
-Synopsys DesignWare Building Blocks
+Resources:
+- Synopsys DesignWare Building Blocks
 https://www.synopsys.com/dw/buildingblock.php
+- HDLBits
+https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 1: Structural SystemVerilog (Transistor-level)
 - [```Inverter```](https://github.com/scalable-arch/100kSV/tree/main/M1-TR-INV)
