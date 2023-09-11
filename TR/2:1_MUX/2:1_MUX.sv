@@ -1,5 +1,5 @@
 // A transistor-level model of a 2:1 MUX
-module 2:1_MUX(
+module MUX_2to1(
     output wire     Y,
     input wire      A,
     input wire      B,
