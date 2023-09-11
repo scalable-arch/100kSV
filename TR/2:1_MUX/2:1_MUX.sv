@@ -16,9 +16,9 @@ module 2:1_MUX(
 
     // Transmission Gate Mux
     pmos    p2(Y, A, S);
-    nmos    n2(Y, A, !S);
+    nmos    n2(Y, A, n_S);
 
-    pmos    p3(Y, B, !S);
+    pmos    p3(Y, B, n_S);
     nmos    n3(Y, B, S);
 
 endmodule
