@@ -17,9 +17,9 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - [```OR2```](https://github.com/scalable-arch/100kSV/tree/main/TR/OR2)
 - XOR2
 - XNOR2
-- AND-OR-Inverter
+- [```AND-OR-Inverter 21```](https://github.com/scalable-arch/100kSV/tree/main/TR/AOI21)
 - OR-AND-Inverter
-- 2:1 Mux
+- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/TR/MUX2)
 - 1:2 demux
 
 # Module 2: Structural SystemVerilog (Gate-level)
