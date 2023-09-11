@@ -1,5 +1,5 @@
 // A transistor-level model of a 2:1 MUX
-module 2:1_MUX(
+module MUX_2to1(
     output wire     Y,
     input wire      A,
     input wire      B,
@@ -10,7 +10,7 @@ module 2:1_MUX(
     supply1 vdd;
     supply0 gnd;
 
-    // Inverting S for n_S
+    // S_BAR
     pmos    p1(n_S, vdd, S);
     nmos    n1(n_S, gnd, S);
 

@@ -2,14 +2,14 @@
 // Copyright (c) 2021 Sunkyunkwan University
 `timescale 1ns/10ps
 
-module 2:1_MUX_TB;
+module MUX_2to1_TB;
     reg     a, b, s;
     wire    y;
     
-    2:1_MUX     dut(y, a, b, s);
+    MUX_2to1     dut(y, a, b, s);
 
     initial begin
-        $monitor($time, "ns\tA = %b, B = %b, S = %b, Y = %b, a, b, s, y");
+        $monitor($time, "ns\tA = %b, B = %b, S = %b, Y = %b", a, b, s, y);
     end
 
     initial begin
@@ -49,7 +49,8 @@ module 2:1_MUX_TB;
         b = 1;
         #1
 
-        $finish
+
+        $finish;
     end
 endmodule
 
