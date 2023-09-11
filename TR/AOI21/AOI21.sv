@@ -1,6 +1,6 @@
-// 2-1 AOI
+// 2-1 AND-OR-Inverter
 // operation: (A+ BC)'
-module AND_OR_Inverter(
+module AOI21 (
     output      wire Y,
     input       wire A,
     input       wire B,

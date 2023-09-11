@@ -1,9 +1,9 @@
 
-module AND_OR_Inverter_TB;
+module AOI21_TB;
     reg a, b, c;
     wire y;
 
-    AND_OR_Inverter         dut(y, a, b, c);
+    AOI21   dut(y, a, b, c);
 
     initial begin
         $monitor($time, "ns\tA = %b, B = %b, C = %b, Y = %b", a, b, c, y);
