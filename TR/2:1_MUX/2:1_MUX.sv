@@ -10,7 +10,7 @@ module MUX_2to1(
     supply1 vdd;
     supply0 gnd;
 
-    // Inverting S for n_S
+    // S_BAR
     pmos    p1(n_S, vdd, S);
     nmos    n1(n_S, gnd, S);
 

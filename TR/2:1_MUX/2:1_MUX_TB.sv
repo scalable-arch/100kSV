@@ -49,6 +49,7 @@ module MUX_2to1_TB;
         b = 1;
         #1
 
+
         $finish;
     end
 endmodule
