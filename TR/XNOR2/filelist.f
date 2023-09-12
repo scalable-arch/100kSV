@@ -1,0 +1,2 @@
+XNOR2_TB.sv
+XNOR2.sv
