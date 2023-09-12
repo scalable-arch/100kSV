@@ -1,10 +1,10 @@
 // A transistor-level model of a 2:1 MUX
-module MUX_2to1(
+module MUX2 (
     output wire     Y,
-    input wire      A,
-    input wire      B,
+    input wire      D0,
+    input wire      D1,
     input wire      S
-    );
+);
 
     wire    n_S;
     supply1 vdd;
@@ -15,10 +15,10 @@ module MUX_2to1(
     nmos    n1(n_S, gnd, S);
 
     // Transmission Gate Mux
-    pmos    p2(Y, A, S);
-    nmos    n2(Y, A, n_S);
+    pmos    p2(Y, D0, S);
+    nmos    n2(Y, D0, n_S);
 
-    pmos    p3(Y, B, n_S);
-    nmos    n3(Y, B, S);
+    pmos    p3(Y, D1, n_S);
+    nmos    n3(Y, D1, S);
 
 endmodule
