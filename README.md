@@ -25,7 +25,7 @@ https://hdlbits.01xz.net/wiki/Main_Page
 # Module 2: Structural SystemVerilog (Gate-level)
 - XOR2
 - XNOR2
-- 2:1 mux
+- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/Gate/MUX2)
 - 1:2 demux
 - Half-adder
 - Full-adder
