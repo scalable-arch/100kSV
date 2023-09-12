@@ -36,6 +36,7 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Barrel shifter
 
 # Module 3: Structural SystemVerilog (Block-level)
+- Ripple Carry Adder
 
 # Module 4: Behavioral SystemVerilog (Combinational)
 
