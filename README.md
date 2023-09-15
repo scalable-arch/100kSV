@@ -42,10 +42,11 @@ https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 5: Behavioral SystemVerilog (Finite State Machine)
 
-- Traffic Light Controller
-- Digital lock
 - Mealy machine
 - Moore machine
+- Traffic light controller
+- SRAM controller
+- Digital lock
 
 
 # Module 6: Basic TestBench
@@ -56,17 +57,23 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - interface
 
 # Module 7: Design Components (FIFO)
-- Simple FIFO
-- [```Parameterized FIFO```](https://github.com/scalable-arch/100kSV/tree/main/FIFO/FIFO2)
-- SRAM-based show-ahead FIFO
-- SRAM-based normal (non show-ahead) FIFO
-- FIFO array based on SRAM
+
+(For show-ahead and normal FIFO modes, refer to https://www.intel.com/content/www/us/en/docs/programmable/683241/21-1/scfifo-and-dcfifo-show-ahead-mode.html)
+
+- Simple FIFO (Show-ahead)
+- [```Parameterized FIFO (Show-ahead)```](https://github.com/scalable-arch/100kSV/tree/main/FIFO/FIFO2)
+- Parameterized FIFO (Normal)
+- SRAM-based FIFO (Show-ahead)
+- SRAM-based FIFO (Normal)
+- Almost-full FIFO
+- FIFO array
 - Store-and-forward FIFO
 - Replay FIFO
+- Multi-reader FIFO
 - Narrower FIFO
 - Wider FIFO
 - async FIFO
-- Register slice
+- Register slice (https://www.xilinx.com/products/intellectual-property/axi-register-slice.html)
 
 # Module 8: Design Components (Arbiter)
 - Fixed-priority arbiter
