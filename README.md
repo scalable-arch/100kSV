@@ -46,15 +46,16 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Moore machine
 - Traffic light controller
 - SRAM controller
+- DRAM bank FSM
 - Digital lock
 
+# Module 6: Design Components (Counters)
 
-# Module 6: Basic TestBench
+- Incrementing counter
+- Decrementing Counter
+- Saturating counter
+![image](https://github.com/scalable-arch/100kSV/assets/10312505/313bf19d-b4c7-41c7-8ae4-e1212c2d3939)
 
-- Clock generation
-- Reset generation
-- I/O
-- interface
 
 # Module 7: Design Components (FIFO)
 
@@ -102,11 +103,13 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - leading one's detector
 - priority coder
 
-## Etc.
-## Test Bench
+# Module 10: Basic TestBench
 
+- Clock generation
+- Reset generation
+- I/O
+- interface
 
-# Computer Architecture
 
 # Functional Units
 
@@ -117,6 +120,13 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Floating-Point Unit
 - LD/ST Unit
 - Branch Prediction
+
+## Etc.
+## Test Bench
+
+
+# Computer Architecture
+
 
 ## Cache
 
