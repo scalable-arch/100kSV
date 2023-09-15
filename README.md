@@ -27,8 +27,8 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - XNOR2
 - [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/Gate/MUX2)
 - 1:2 demux
-- Half-adder
-- Full-adder
+- [```Half-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/HALF_ADDER)
+- [```Full-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/FULL_ADDER)
 - Karnaugh Map
 - Sum-of-Products
 - Product-of-Sums
