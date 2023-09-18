@@ -21,9 +21,9 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - OR-AND-Inverter
 - [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/TR/MUX2)
 - [```1:2 demux```](https://github.com/scalable-arch/100kSV/tree/main/TR/DEMUX2)
-- RS Latch
-- D Flip Flop
-- JK Flip Flop
+- RS latch
+- D flip flop
+- JK flip flop
 
 # Module 2: Structural SystemVerilog (Gate-level)
 - XOR2
@@ -32,9 +32,9 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - 1:2 demux
 - [```Half-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/HALF_ADDER)
 - [```Full-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/FULL_ADDER)
-- RS Latch
-- D Flip Flop
-- JK Flip Flop
+- RS latch
+- D flip flop
+- JK flip flop
 - Karnaugh Map
 - Sum-of-Products
 - Product-of-Sums
@@ -42,7 +42,7 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Barrel shifter
 
 # Module 3: Structural SystemVerilog (Block-level)
-- Ripple Carry Adder
+- Ripple carry adder
 
 # Module 4: Behavioral SystemVerilog (Combinational)
 
@@ -58,7 +58,7 @@ https://hdlbits.01xz.net/wiki/Main_Page
 # Module 6: Design Components (Counters)
 
 - Incrementing counter
-- Decrementing Counter
+- Decrementing counter
 - Saturating counter
 ![image](https://github.com/scalable-arch/100kSV/assets/10312505/313bf19d-b4c7-41c7-8ae4-e1212c2d3939)
 
@@ -84,10 +84,13 @@ https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 8: Design Components (Arbiter)
 - Fixed-priority arbiter
+- Parameterized arbiter
 - Round-robin arbiter
 - Weighted round-robin arbiter
-- parameterized arbiter
+- Lottery arbiter
+- Matrix arbiter
 - Two-level arbiter
+- 
 
 # Module 9: Arithmetic/Logical Operations
 - 4-bit adder (ripple carry)
@@ -98,9 +101,6 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - Absolute value
 - Arithmetic shifter
 - Barrel shifter
-- Incremeting counter
-- Decrementing counter
-- Saturating counter
 - Booth's multiplier
 - two-stage pipelined multiplier
 - Binary to gray code converter
