@@ -21,6 +21,9 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - OR-AND-Inverter
 - [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/TR/MUX2)
 - [```1:2 demux```](https://github.com/scalable-arch/100kSV/tree/main/TR/DEMUX2)
+- RS Latch
+- D Flip Flop
+- JK Flip Flop
 
 # Module 2: Structural SystemVerilog (Gate-level)
 - XOR2
@@ -29,6 +32,9 @@ https://hdlbits.01xz.net/wiki/Main_Page
 - 1:2 demux
 - [```Half-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/HALF_ADDER)
 - [```Full-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/FULL_ADDER)
+- RS Latch
+- D Flip Flop
+- JK Flip Flop
 - Karnaugh Map
 - Sum-of-Products
 - Product-of-Sums
