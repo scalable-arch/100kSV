@@ -7,13 +7,13 @@ The parameterized FIFO is a data structure that allows data to be read and writt
 ## Features
 
 - **Parameterized Width and Depth**: Customize the bit-width and depth of the FIFO to suit specific application requirements.
-- When the `rden_i` signal is asserted, the data output (`rdata_o`) from the FIFO will be available on the subsequent clock cycle.
+- **Predictable Read Output**: When the `rden_i` signal is asserted, the data output (`rdata_o`) from the FIFO will be available on the subsequent clock cycle.
 
 ## Parameters
 
 - `DATA_WIDTH`: The bit-width of the data to be stored in the FIFO.
 - `DEPTH_LG2`: The logarithm base-2 of the number of data entries the FIFO can store.
-
+- ``Conditional Memory Reset``: Memory reset operation via the rst_n signal is active only when the RST_MEM parameter is set to 0.
 ## Ports
 
 - `clk`: Clock signal.

@@ -94,10 +94,10 @@ module FIFO_TB;
             @(posedge clk);
             #1
 
-			if(rden) begin // whether rdata is valid
+	        if(rden) begin // whether rdata is valid
 			    logic   [DATA_WIDTH-1:0]        expected_data;
                 $display($time, "ns, popping matching data: %x", rdata);
-				data_sb.get(expected_data);
+	            data_sb.get(expected_data);
 
                 // compare against the rdata
                 if (expected_data===rdata) begin    // "===" instead of "==" to compare against Xs
