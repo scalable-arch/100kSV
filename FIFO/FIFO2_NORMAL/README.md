@@ -13,7 +13,7 @@ The parameterized FIFO is a data structure that allows data to be read and writt
 
 - `DATA_WIDTH`: The bit-width of the data to be stored in the FIFO.
 - `DEPTH_LG2`: The logarithm base-2 of the number of data entries the FIFO can store.
-- ``Conditional Memory Reset``: Memory reset operation via the rst_n signal is active only when the RST_MEM parameter is set to 0.
+- ``RST_MEM``: Determines the behavior of the memory reset. When set to 0, the memory will reset via the rst_n signal.
 ## Ports
 
 - `clk`: Clock signal.
