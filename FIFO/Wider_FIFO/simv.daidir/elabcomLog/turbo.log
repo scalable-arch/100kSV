@@ -1,0 +1,7 @@
+Command Line: /mel/CAD/synopsys/vcs/linux64/bin/elabcom -logdir simv.daidir/elabcomLog -simvdaidir simv.daidir -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top FIFO_TB -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
+uname(Linux mel.skku.edu 5.4.96 #1 SMP Tue Feb 9 11:24:26 KST 2021 x86_64)
+[INFO] error/warning message 'C00380' has been suppressed.
+[INFO] error/warning message 'C00381' has been suppressed.
+[INFO] error/warning message 'C00388' has been suppressed.
+[INFO] error/warning message 'C00389' has been suppressed.
+au time 0.092103 0.013939 0.017854 delta 94109696 94109696 total 183496704 183496704
