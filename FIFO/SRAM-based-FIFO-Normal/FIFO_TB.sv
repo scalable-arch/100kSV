@@ -35,8 +35,6 @@ module FIFO_TB;
     wire                                full,   empty;
     logic                               wren,   rden;
     logic   [DATA_WIDTH-1:0]            wdata,  rdata;
-    logic                               chip_select_i;
-    logic                               count;
     logic   [DATA_WIDTH-1:0]            expected_data;
     logic     [DATA_WIDTH-1:0]            temp_rdata;
 
@@ -49,8 +47,6 @@ module FIFO_TB;
     (
         .clk                            (clk),
         .rst_n                          (rst_n),
-
-        .chip_select_i                  (chip_select_i),
 
         .full_o                         (full),
         .wren_i                         (wren),
@@ -72,7 +68,6 @@ module FIFO_TB;
     initial begin
         wren                            = 1'b0;
         wdata                           = 'hX;
-        chip_select_i                   = 1'b1;
         @(posedge rst_n);   // wait for the reset release
 
         for (int i=0; i<TEST_DATA_CNT; i=i+1) begin

@@ -27,8 +27,7 @@ module SRAM #(
     output  reg [DATA_WIDTH-1:0]        data_o,
     input   wire                        wren_i,
     input   wire                        rden_i,
-    input   wire                        rst_n,
-    input   wire                        chip_select_i
+    input   wire                        rst_n
 );
 
 ```
@@ -47,8 +46,7 @@ SRAM module 호출
         .data_o(rdata_o), //read시 나오는 data
         .wren_i(wren_i), //wren
         .rden_i(rden_i), //rden
-        .rst_n(rst_n), //reset
-        .chip_select_i(chip_select_i) //해당 chip을 사용
+        .rst_n(rst_n) //reset
     );
 ```
 
