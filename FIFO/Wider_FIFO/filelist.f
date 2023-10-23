@@ -1,2 +1,2 @@
-Wider_FIFO_TB.sv
-Wider_FIFO.sv
+FIFO_TB.sv
+FIFO.sv
