@@ -7,8 +7,8 @@ module FIFO_TB;
     localparam  FIFO_DEPTH_LG2          = 4;
     localparam  DATA_WIDTH              = 32;
 
-    localparam  TEST_DATA_CNT           = 256;
-    localparam  TEST_TIMEOUT            = 100000;
+    localparam  TEST_DATA_CNT           = 128;
+    localparam  TEST_TIMEOUT            = 500000;
 
     //----------------------------------------------------------
     // Clock and reset generation
@@ -34,8 +34,8 @@ module FIFO_TB;
     wire                                full,   empty;
     logic                               wren,   rden;
     logic   [DATA_WIDTH-1:0]            wdata,  rdata;
-    logic   [3:0]                       wrSize_tb   = 'd0;
-    logic   [3:0]                       dataSize_tb = 'd0;
+    logic   [3:0]                       error_discard = 'd0;
+
 
     FIFO
     #(
@@ -62,9 +62,7 @@ module FIFO_TB;
 
     // A scoreboard to hold expected data
     mailbox                             data_sb = new();    // unlimited size
-    int                             empty_result;
-    logic   [DATA_WIDTH-1:0]        empty_check;
-    logic   [DATA_WIDTH-1:0]        delete_mailbox;
+    logic   [DATA_WIDTH-1:0]            delete_mailbox;
     // Push driver
     initial begin
         wren                            = 1'b0;
@@ -76,39 +74,28 @@ module FIFO_TB;
             #1
             wren                            = 1'b0;
             if (~full) begin
-                if (($random()%3)==0) begin     // push with 33% probability
-                    wren                            = 'd1;
-                    empty_result = data_sb.try_peek(empty_check);
+                if (($random()%3)==0) begin                           // push with 33% probability (write data(not last))
+                    wren                            = 1'b1;
+                    wdata                           = $urandom();
+                    wdata[31:1]                     = $random() + 'd1;
+                    if (($random()% 18)==0) begin                     //  push with 1/18 probaility (write last data)
+                    wdata[31:1]                     = 'd0;
+                    end
+                    data_sb.put(wdata);
+                    error_discard = error_discard + 'd1;
 
-                    if (empty_result==0) begin                               //first header(dataSize) 4B write
-                        wdata                           = $urandom();          
-                        wdata[31:28]                    = ($random() % 13) + 'd1;  //dataSize <= 4Byte~56Byte, 0001~1110
-                        dataSize_tb = wdata[31:28];
-                        data_sb.put(wdata);
-                        $display($time, "ns, pushing        Header: %x // dataSize %1dB, Packet Start", wdata, wdata[31:28] * 'd4);             
-                    end else if (wrSize_tb == (dataSize_tb)) begin             // CRC 4B write
-                        wdata                           = $urandom();
-                        if (($random() % 2) == 'd0) begin                     // CRC no error
-                            wdata[31:24]                = 'd0;
-                            data_sb.put(wdata);
-                            $display($time, "ns, pushing           CRC: %x // CRC_no_error, Store, Packet End", wdata);
-
-                        end else begin                                       // CRC error
-                            wdata[31:24]                = $random() + 'd1;
-                            data_sb.put(wdata);
-                            $display($time, "ns, pushing           CRC: %x // CRC_error, Packet End", wdata);
-                            for (int i=0; i<(dataSize_tb + 'd2); i=i+1) begin
-                                data_sb.get(delete_mailbox);
-                                $display($time, "ns, remove   error_packet: %x // Remove", delete_mailbox);
-                            end                   
+                    if (wdata[31:1] != 'd0) begin                    // for push log
+                        $display($time, "ns, pushing %x", wdata);
+                    end else if ((wdata[31:1] == 'd0) & wdata[0] == 'd1) begin
+                        $display($time, "ns, pushing %x // last data(end packet) with error", wdata);
+                        for (int i=0; i< error_discard; i++) begin
+                            data_sb.get(delete_mailbox);
+                            $display($time, "ns, remove  %x // Remove error packet", delete_mailbox);
                         end 
-                        wrSize_tb                       = 'd0;
-                        dataSize_tb                     = 'd0;
-                    end else begin
-                        wdata                           = $urandom();        // write data 4B repeatly
-                        wrSize_tb                       = wrSize_tb + 'd1; 
-                        data_sb.put(wdata);
-                        $display($time, "ns, pushing          data: %x // data(4B)", wdata);
+                        error_discard = 'd0;
+                    end else if ((wdata[31:1] == 'd0) & wdata[0] == 'd0) begin
+                        $display($time, "ns, pushing %x // last data(end packet) with no error", wdata);
+                        error_discard = 'd0;
                     end
                 end
             end
@@ -133,14 +120,14 @@ module FIFO_TB;
                 int                             peak_result;
                 logic   [DATA_WIDTH-1:0]        expected_data;
 
-                peak_result = data_sb.try_peek(expected_data);  // store expected_data and return 0/1
+                peak_result = data_sb.try_peek(expected_data);
                 if (peak_result==0) begin
                     $fatal($time, "ns, the scoreboard is empty: %d", peak_result);
                 end
 
                 // compare against the rdata
                 if (expected_data===rdata) begin    // "===" instead of "==" to compare against Xs
-                    $display($time, "ns, peeking matching data: %x // Forward", rdata);
+                    $display($time, "ns, peeking matching data: %x", rdata);
                 end
                 else begin
                     $fatal($time, "ns, data mismatch: %x (exp) %x (DUT)", expected_data, rdata);
@@ -152,7 +139,7 @@ module FIFO_TB;
                     rden                            = 1'b1;
                     // pop from the scoreboard -> discard
                     data_sb.get(expected_data);
-                    $display($time, "ns, popping matching data: %x // Forward", rdata);
+                    $display($time, "ns, popping matching data: %x", rdata);
                 end
             end
         end

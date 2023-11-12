@@ -12,84 +12,68 @@
 
 The advantage of the Store and Forward method is that it ensures data integrity since it only transmits after receiving and checking the entire packet.
 
-## Code Operation
+## Code Architecture
 
-+ FIFO
-    + FIFO Width : 4B
-    + FIFO Depth : 16
-
-+ Packet = Header(4B) + Data(4B) + Data(4B) + Data(4B) + ... + CRC(4B)
-
-
-+ Header
-    + Header size : 4B
-    + Header[31:28] -> data size
-    + ex) 0001 -> 4B, 0010 -> 8B, ...., 1110 -> 56B
-
-+ DATA  
-    + Determined by data size of Header
-
-+ CRC
-    + CRC size : 4B
-    + CRC[31:24] - > CRC_error
-    + ex) if 0000 0000 -> no_error, else -> error
++ s&f FIFO
++ eop(end of packet)_check
++ error_check
 
 
 ## Example
 ### Initial
 if Header[31:28] = 4'b0011 --->  Header(4B) + Data(4B) + Data(4B) + Data(4B) + CRC(4B)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
 &nbsp;&nbsp;-> wrptr_tmp  
 &nbsp;&nbsp;-> wrptr_store  
 &nbsp;&nbsp;-> rdptr
 
-### Write
+### Write (wren = 1, eop = 0)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
 &nbsp;&nbsp;&nbsp;&nbsp; \--\--\--\--\-> \--\--\--> \--\--\--> \--\--\--> \--\--\--> wrptr_tmp  
 &nbsp;&nbsp;-> wrptr_store  
 &nbsp;&nbsp;-> rdptr
 
 
-### Store (CRC_no_error)
+### Store (eop = 1, error = 0)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> wrptr_tmp  
 &nbsp;&nbsp;&nbsp;&nbsp;--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--> wrptr_store  
 &nbsp;&nbsp;-> rdptr
 
-### Forward
+### Forward (rden = 1)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> wrptr_tmp  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> wrptr_store  
 &nbsp;&nbsp;&nbsp;&nbsp; \--\--\--\--\-> \--\--\--> \--\--\--> \--\--\--> \--\--\--> rdptr
 
-### Remove (CRC_Error)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+### Remove (eop = 1, error = 1)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
 &nbsp;&nbsp;&nbsp;&nbsp; <\--\--\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\-- wrptr_tmp  
 &nbsp;&nbsp;-> wrptr_store  
 &nbsp;&nbsp;-> rdptr 
 
-### Empty (Receiver can read data, store(CRC_no_error) -> empty -> forward)
+### Empty (write -> store -> forward -> empty)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;header&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;data&nbsp;&nbsp;|&nbsp;&nbsp;CRC&nbsp;&nbsp;|  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\--\--\--\-\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> wrptr_tmp  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> wrptr_store  
-&nbsp;&nbsp;-> rdptr
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> rdptr
 
 ### Full 
 + same condition with simpe FIFO  
