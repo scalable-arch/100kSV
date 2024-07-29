@@ -1,17 +1,20 @@
 module FIFO #(
     parameter       DEPTH_LG2           = 4,
     parameter       DATA_WIDTH          = 32,
-    parameter       RST_MEM             = 0     // 0: do not apply reset to the memory
+    parameter       ALMOST_FULL_LEVEL   = 14,  // For example, 2 entries from being full
+    parameter       ALMOST_EMPTY_LEVEL  = 2     // For example, 2 entries
 )
 (
     input   wire                        clk,
     input   wire                        rst_n,
 
     output  wire                        full_o,
+    output  wire                        almost_full_o,
     input   wire                        wren_i,
     input   wire    [DATA_WIDTH-1:0]    wdata_i,
 
     output  wire                        empty_o,
+    output  wire                        almost_empty_o,
     input   wire                        rden_i,
     output  wire    [DATA_WIDTH-1:0]    rdata_o
 );
@@ -19,14 +22,17 @@ module FIFO #(
     localparam  FIFO_DEPTH              = (1<<DEPTH_LG2);
 
     reg     [DATA_WIDTH-1:0]            mem[FIFO_DEPTH];
+    reg                                 full,   full_n,
+                                        empty,  empty_n,
+                                        almost_full, almost_full_n,
+                                        almost_empty, almost_empty_n;
+    reg     [DEPTH_LG2:0]               wrptr,  wrptr_n,
+                                        rdptr,  rdptr_n;
 
-    reg                                 full,       full_n,
-                                        empty,      empty_n;
-    reg     [DEPTH_LG2:0]               wrptr,      wrptr_n,
-                                        rdptr,      rdptr_n;
+    reg     [DEPTH_LG2:0]               counter,    counter_n;
 
     always_ff @(posedge clk)
-        if (!rst_n & RST_MEM) begin
+        if (!rst_n) begin
             for (int i=0; i<FIFO_DEPTH; i++) begin
                 mem[i]                      <= {DATA_WIDTH{1'b0}};
             end
@@ -44,6 +50,11 @@ module FIFO #(
 
             wrptr                       <= {(DEPTH_LG2+1){1'b0}};
             rdptr                       <= {(DEPTH_LG2+1){1'b0}};
+
+            counter                     <= {(DEPTH_LG2+1){1'b0}};
+
+            almost_full                 <= 1'b0;
+            almost_empty                <= 1'b0;
         end
         else begin
             full                        <= full_n;
@@ -51,24 +62,34 @@ module FIFO #(
 
             wrptr                       <= wrptr_n;
             rdptr                       <= rdptr_n;
+
+            counter                     <= counter_n;
+
+            almost_full                 <= almost_full_n;
+            almost_empty                <= almost_empty_n;
         end
 
     always_comb begin
         wrptr_n                     = wrptr;
         rdptr_n                     = rdptr;
+        counter_n                   = counter;
 
-        if (wren_i) begin
-            wrptr_n                     = wrptr + 'd1;
+        if (wren_i & ~full) begin
+            wrptr_n                 = wrptr + 'd1;
+            counter_n               = counter_n + 'b1;
         end
 
-        if (rden_i) begin
-            rdptr_n                     = rdptr + 'd1;
+        if (rden_i & ~empty) begin
+            rdptr_n                 = rdptr + 'd1;
+            counter_n               = counter_n - 'b1;
         end
 
         empty_n                     = (wrptr_n == rdptr_n);
         full_n                      = (wrptr_n[DEPTH_LG2]!=rdptr_n[DEPTH_LG2])
                                      &(wrptr_n[DEPTH_LG2-1:0]==rdptr_n[DEPTH_LG2-1:0]);
 
+        almost_full_n               = (counter_n >= ALMOST_FULL_LEVEL);
+        almost_empty_n              = (counter_n <= ALMOST_EMPTY_LEVEL);
     end
 
     // synthesis translate_off
@@ -91,6 +112,8 @@ module FIFO #(
 
     assign  full_o                      = full;
     assign  empty_o                     = empty;
+    assign  almost_full_o               = almost_full;
+    assign  almost_empty_o              = almost_empty;
     assign  rdata_o                     = mem[rdptr[DEPTH_LG2-1:0]];
 
 endmodule

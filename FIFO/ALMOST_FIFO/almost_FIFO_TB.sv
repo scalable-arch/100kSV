@@ -1,4 +1,4 @@
-// A testbench for a FIFO
+
 `timescale 1ns/10ps
 
 module FIFO_TB;
@@ -6,7 +6,8 @@ module FIFO_TB;
     localparam  CLK_PERIOD              = 10;
     localparam  FIFO_DEPTH_LG2          = 4;
     localparam  DATA_WIDTH              = 32;
-
+    localparam  ALMOST_FULL_LEVEL       = 14;
+    localparam  ALMOST_EMPTY_LEVEL      = 2;
     localparam  TEST_DATA_CNT           = 128;
     localparam  TEST_TIMEOUT            = 100000;
 
@@ -32,24 +33,27 @@ module FIFO_TB;
     // Design-Under-Test (DUT)
     //----------------------------------------------------------
     wire                                full,   empty;
+    wire                                almost_full, almost_empty;
     logic                               wren,   rden;
     logic   [DATA_WIDTH-1:0]            wdata,  rdata;
 
     FIFO
     #(
         .DEPTH_LG2                      (FIFO_DEPTH_LG2),
-        .DATA_WIDTH                     (DATA_WIDTH)
+        .DATA_WIDTH                     (DATA_WIDTH),
+        .ALMOST_FULL_LEVEL              (ALMOST_FULL_LEVEL),
+        .ALMOST_EMPTY_LEVEL             (ALMOST_EMPTY_LEVEL)
     )
     dut
     (
         .clk                            (clk),
         .rst_n                          (rst_n),
-
         .full_o                         (full),
+        .almost_full_o                  (almost_full),
         .wren_i                         (wren),
         .wdata_i                        (wdata),
-
         .empty_o                        (empty),
+        .almost_empty_o                 (almost_empty),
         .rden_i                         (rden),
         .rdata_o                        (rdata)
     );
@@ -57,8 +61,6 @@ module FIFO_TB;
     //----------------------------------------------------------
     // Driver, Monitor, and Scoreboard
     //----------------------------------------------------------
-
-    // A scoreboard to hold expected data
     mailbox                             data_sb = new();    // unlimited size
 
     // Push driver
@@ -72,7 +74,7 @@ module FIFO_TB;
             #1
             wren                            = 1'b0;
             if (~full) begin
-                if (($random()%3)==0) begin     // push with 33% probability
+                if (($random()%2)==0) begin     // push with 33% probability
                     wren                            = 1'b1;
                     wdata                           = $urandom();
                     data_sb.put(wdata);
@@ -94,9 +96,6 @@ module FIFO_TB;
             rden                            = 1'b0;
 
             if (~empty) begin
-                // step 1: check
-
-                // peek the expected data from the scoreboard
                 int                             peak_result;
                 logic   [DATA_WIDTH-1:0]        expected_data;
 
@@ -105,19 +104,15 @@ module FIFO_TB;
                     $fatal($time, "ns, the scoreboard is empty: %d", peak_result);
                 end
 
-                // compare against the rdata
-                if (expected_data===rdata) begin    // "===" instead of "==" to compare against Xs
+                if (expected_data===rdata) begin
                     $display($time, "ns, peeking matching data: %x", rdata);
                 end
                 else begin
                     $fatal($time, "ns, data mismatch: %x (exp) %x (DUT)", expected_data, rdata);
                 end
 
-                // step 2: pop the entry
-                if (($random()%3)==0) begin         // pop with 33% probability
-                    // pop from the DUT
+                if (($random()%5)==0) begin         // pop with 33% probability
                     rden                            = 1'b1;
-                    // pop from the scoreboard -> discard
                     data_sb.get(expected_data);
                     $display($time, "ns, popping matching data: %x", rdata);
                 end
@@ -129,6 +124,27 @@ module FIFO_TB;
         $finish;
     end
 
+    // Almost_Full and Almost_Empty Monitor and Checker
+    initial begin
+        @(posedge rst_n);   // wait for the reset release
+
+        forever begin
+            @(posedge clk);
+            
+            // Monitor
+            if (almost_full)
+                $display($time, " ns, FIFO almost full, Items in FIFO: %0d", data_sb.num());
+            if (almost_empty)
+                $display($time, " ns, FIFO almost empty, Items in FIFO: %0d", data_sb.num());
+
+            // Checker
+            if (almost_full && data_sb.num() < (1 << FIFO_DEPTH_LG2) - ALMOST_FULL_LEVEL)
+                $fatal($time, " ns, ERROR: almost_full asserted while there are only %0d items in FIFO", data_sb.num());
+            if (almost_empty && data_sb.num() > ALMOST_EMPTY_LEVEL)
+                $fatal($time, " ns, ERROR: almost_empty asserted while there are %0d items in FIFO", data_sb.num());
+        end
+    end
+    
     // Time-out
     initial begin
         #TEST_TIMEOUT
@@ -137,3 +153,4 @@ module FIFO_TB;
     end
 
 endmodule
+
