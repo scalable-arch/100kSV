@@ -54,7 +54,7 @@ module FIFO #(
             counter                     <= {(DEPTH_LG2+1){1'b0}};
 
             almost_full                 <= 1'b0;
-            almost_empty                <= 1'b0;
+            almost_empty                <= 1'b1;
         end
         else begin
             full                        <= full_n;
