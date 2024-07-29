@@ -24,13 +24,13 @@ module FIFO #(
     reg     [DATA_WIDTH-1:0]            mem[FIFO_DEPTH];
     reg                                 full,   full_n,
                                         empty,  empty_n,
-                                        almost_full,
-                                        almost_empty;
+                                        almost_full, almost_full_n,
+                                        almost_empty, almost_empty_n;
     reg     [DEPTH_LG2:0]               wrptr,  wrptr_n,
                                         rdptr,  rdptr_n;
-    
+
     reg     [DEPTH_LG2:0]               counter,    counter_n;
-    
+
     always_ff @(posedge clk)
         if (!rst_n) begin
             for (int i=0; i<FIFO_DEPTH; i++) begin
@@ -51,7 +51,10 @@ module FIFO #(
             wrptr                       <= {(DEPTH_LG2+1){1'b0}};
             rdptr                       <= {(DEPTH_LG2+1){1'b0}};
 
-            counter                     <= {(DEPTH_LG2+1){1'b0}};;
+            counter                     <= {(DEPTH_LG2+1){1'b0}};
+
+            almost_full                 <= 1'b0;
+            almost_empty                <= 1'b0;
         end
         else begin
             full                        <= full_n;
@@ -61,6 +64,9 @@ module FIFO #(
             rdptr                       <= rdptr_n;
 
             counter                     <= counter_n;
+
+            almost_full                 <= almost_full_n;
+            almost_empty                <= almost_empty_n;
         end
 
     always_comb begin
@@ -82,10 +88,9 @@ module FIFO #(
         full_n                      = (wrptr_n[DEPTH_LG2]!=rdptr_n[DEPTH_LG2])
                                      &(wrptr_n[DEPTH_LG2-1:0]==rdptr_n[DEPTH_LG2-1:0]);
 
-        almost_full                 = (counter_n >= ALMOST_FULL_LEVEL);
-        almost_empty                = (counter_n <= ALMOST_EMPTY_LEVEL);
+        almost_full_n               = (counter_n >= ALMOST_FULL_LEVEL);
+        almost_empty_n              = (counter_n <= ALMOST_EMPTY_LEVEL);
     end
-
 
     // synthesis translate_off
     always @(posedge clk) begin
@@ -112,4 +117,3 @@ module FIFO #(
     assign  rdata_o                     = mem[rdptr[DEPTH_LG2-1:0]];
 
 endmodule
-
