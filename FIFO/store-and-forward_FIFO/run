@@ -1,0 +1,2 @@
+vcs -full64 -kdb -debug_access+all -LDFLAGS -Wl,--no-as-needed -sverilog -f filelist.f -lca +vcs+dumpvars+wave.vcd -R
+rm -rf csrc/ DVEfiles/ simv* ucli.key
