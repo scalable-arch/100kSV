@@ -7,8 +7,8 @@ module RRArbiter_TB;
     localparam TEST_TIMEOUT         =10000;
     
     // Total Transition Length
-    localparam A_DURATION           =30;
-    localparam B_DURATION           =50;
+    localparam A_DURATION           =5;
+    localparam B_DURATION           =15;
 
     // Initiaion Time 
     localparam A_INIT_TIME          =100;
@@ -70,20 +70,21 @@ module RRArbiter_TB;
     integer A_init = 0;
     integer B_init = 0;
     
-    initial begin
-    
+    initial begin   
         A_count                     = A_DURATION;
-        B_count                     = B_DURATION;
         A_valid_i                   = 0;
-        B_valid_i                   = 0;
         
         #A_INIT_TIME;
         A_init                      = 1;
-        
-        #B_INIT_TIME;
-        B_init                      = 1;
+
+    end
     
-    
+    initial begin
+       B_count                     = B_DURATION;
+       B_valid_i                   = 0;
+          
+       #B_INIT_TIME;
+       B_init                      = 1;            
     end
     
     
