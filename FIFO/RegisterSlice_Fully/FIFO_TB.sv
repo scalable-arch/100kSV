@@ -1,11 +1,10 @@
 `timescale  1ns/10ps
 
-
 `define     ID_WIDTH                3
 `define     ADDR_WIDTH              32
 `define     DATA_WIDTH              32
-`define     TOTAL_WDITH             {`ID_WIDTH+`ADDR_WIDTH+`DATA_WIDTH}
 
+`define     AXI_LEN                 {`ID_WIDTH+`ADDR_WIDTH+`DATA_WIDTH}  
 
 
 
@@ -15,7 +14,6 @@ module  FIFO_TB;
 
     localparam  TEST_DATA_CNT           = 16;
     localparam  TEST_TIMEOUT            = 10000;
-
 
     //----------------------------------------------------------
     // Clock and reset generation
@@ -40,25 +38,21 @@ module  FIFO_TB;
     // Design-Under-Test (DUT)
     //----------------------------------------------------------
 
-    logic   [`TOTAL_WDITH-1:0]             payload_in;
-    wire    [`TOTAL_WDITH-1:0]             payload_out;
-    
+    logic            [`AXI_LEN-1:0]          in_AXI;
+    wire             [`AXI_LEN-1:0]          out_AXI;
+
     logic                                   svalid;
     wire                                    sready;
     wire                                    dvalid; 
     logic                                   dready;
-    wire     [1:0]                          CE;
-    wire                                    ready,valid;
-    wire    [2:0]                           state;
-
-    //-----------------------------------------------------------------
-    // ------------------- module instantiation -----------------------
-    //-----------------------------------------------------------------
-
-    FIFO    u_FIFO(.clk(clk),.rstn(rstn),.in_payload(payload_in),.sready(sready),.svalid(svalid),.out_payload(payload_out),.dready(dready),.dvalid(dvalid),.CE(CE),.ready(ready),.valid(valid),.state(state));
+    
     
 
-    initial begin
+    FIFO    u_FIFO(.clk(clk),.rstn(rstn),
+                   .in_AXI(in_AXI),.sready(sready),.svalid(svalid),
+                   .out_AXI(out_AXI),.dready(dready),.dvalid(dvalid));
+
+    initial begin 
         svalid = 1'b0;
         dready = 1'b0;
 
@@ -66,51 +60,50 @@ module  FIFO_TB;
 
         dready = 1'b1;
 
-        repeat(3) @(posedge clk);
-        svalid = 1'b1;
-
-        repeat(6) @(posedge clk);
-        svalid = 1'b0;
+        repeat(2) @(posedge clk);
+        #0 svalid = 1'b1;
 
         repeat(3) @(posedge clk);
-        svalid = 1'b1;
+        #0 svalid = 1'b0;
 
-        repeat(4) @(posedge clk);
-        dready = 1'b0;
+        repeat(2) @(posedge clk);
+        #0 svalid = 1'b1;
 
-        repeat(3) @(posedge clk);
-        dready = 1'b1;
+        repeat(2) @(posedge clk);
+        #0 dready = 1'b0;
+
+        repeat(2) @(posedge clk);
+        #0 dready = 1'b1;
     end
-
 
     initial begin
-        payload_in = 'x;
+        in_AXI = 'x;
         @(posedge rstn);
-        
-        repeat(3) @(posedge clk);
-        #0 payload_in = 1;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 2;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 3;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 'x;
-        repeat(3) @(posedge clk);
-        #0 payload_in = 4;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 5;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 6;
-        repeat(5) @(posedge clk);
-        #0 payload_in = 7;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 8;
-        repeat(2) @(posedge clk);
-        #0 payload_in = 9;
 
+        repeat(2) @(posedge clk);
+        #0 in_AXI = 1;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 2;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 3;
+
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 'x;
+
+        repeat(2) @(posedge clk);
+        #0 in_AXI = 4;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 5;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 6;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 7;
+
+        repeat(3) @(posedge clk);
+        #0 in_AXI = 8;
+        repeat(1) @(posedge clk);
+        #0 in_AXI = 9;
     end
-
-
 
     // Time_out
     initial begin
@@ -118,5 +111,6 @@ module  FIFO_TB;
         $display("Simulation timed out!");
         $fatal("Simulation timed out");
     end
+
 
 endmodule
