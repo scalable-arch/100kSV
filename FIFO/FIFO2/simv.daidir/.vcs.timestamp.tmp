@@ -1,0 +1,86 @@
+0 
+22
+-Mamsrun=
+-Masflags=--32
+-Mcc=gcc
+-Mcfl= -pipe -m32 -O -I/mel/CAD/synopsys/vcs/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -m32 -m32 -rdynamic
+-Mobjects= /mel/CAD/synopsys/vcs/linux/lib/libvirsim.so /mel/CAD/synopsys/vcs/linux/lib/liberrorinf.so /mel/CAD/synopsys/vcs/linux/lib/libsnpsmalloc.so /mel/CAD/synopsys/vcs/linux/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/mel/CAD/synopsys/vcs/linux/lib/vcs_save_restore_new.o
+-Msyslibs=/mel/CAD/synopsys/vcs/linux/lib/ctype-stubs_32.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -m32 -I/mel/CAD/synopsys/vcs/include
+-gen_obj
+-picarchive
+-sverilog
+/mel/CAD/synopsys/vcs/linux/bin/vcs1
+FIFO.sv
+FIFO_TB.sv
+51
+sysc_uni_pwd=/home/jihun/100kSV/FIFO/FIFO2
+XDG_SESSION_ID=107845
+XDG_RUNTIME_DIR=/run/user/1037
+XDG_DATA_DIRS=/home/jihun/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+WV_HOME=/mel/CAD/synopsys/wv
+VSCODE_IPC_HOOK_CLI=/run/user/1037/vscode-ipc-765855af-8899-49f1-b644-23cd10e10c22.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/1037/vscode-git-566fa47211.sock
+VSCODE_GIT_ASKPASS_NODE=/home/jihun/.vscode-server/bin/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/node
+VSCODE_GIT_ASKPASS_MAIN=/home/jihun/.vscode-server/bin/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+VMR_MODE_FLAG=32
+VERDI_HOME=/mel/CAD/synopsys/verdi
+VCS_HOME=/mel/CAD/synopsys/vcs
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux
+VCS_AMD_PURE32=1
+UNAME=/bin/uname
+TOOL_HOME=/mel/CAD/synopsys/vcs/linux
+TERM_PROGRAM_VERSION=1.82.2
+TERM_PROGRAM=vscode
+SYNOPSYS=/mel/CAD/synopsys/fm
+SSH_CONNECTION=115.145.211.210 61675 115.145.211.220 22
+SSH_CLIENT=115.145.211.210 61675 22
+SPY_HOME=/mel/CAD/synopsys/spyglass
+SNPS_VCS_CLANG_PATH=/fs/src/interfaces/LLVM_Project/QSCM/opt/llvm-3.9.1/linux64
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+RC_HOME=/mel/CAD/cadence/RC
+PTS_HOME=/mel/CAD/synopsys/pts
+OVA_UUM=0
+MODULESHOME=/usr/share/Modules
+MODULEPATH=/usr/share/Modules/modulefiles:/etc/modulefiles
+MMSIM_HOME=/mel/CAD/cadence/MMSIM
+LOADEDMODULES=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+INCISIVE_HOME=/mel/CAD/cadence/INCISIVE/tools
+IC_HOME=/mel/CAD/cadence/IC
+HSPICE_HOME=/mel/CAD/synopsys/hspice
+HISTCONTROL=ignoredups
+GIT_ASKPASS=/home/jihun/.vscode-server/bin/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/extensions/git/dist/askpass.sh
+GENUS_HOME=/mel/CAD/cadence/GENUS
+FM_HOME=/mel/CAD/synopsys/fm
+EXT_HOME=/mel/CAD/cadence/EXT
+EDI_HOME=/mel/CAD/cadence/EDI
+DC_HOME=/mel/CAD/synopsys/syn
+CONFRML_HOME=/mel/CAD/cadence/CONFRML
+COLORTERM=truecolor
+BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
+ASSURA_HOME=/mel/CAD/cadence/ASSURA
+0
+2
+1695282484 FIFO.sv
+1695282484 FIFO_TB.sv
+5
+0 
+1528255713 /mel/CAD/synopsys/vcs/linux/lib/libvirsim.so
+1528255042 /mel/CAD/synopsys/vcs/linux/lib/liberrorinf.so
+1528255024 /mel/CAD/synopsys/vcs/linux/lib/libsnpsmalloc.so
+1528255315 /mel/CAD/synopsys/vcs/linux/lib/libvfs.so
