@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ../../scripts/common.sh
+
+if [ -e $RUN_DIR/dump.vcd ];
+then
+	cd $RUN_DIR
+	$WAVE_CMD $WAVE_OPTIONS -i dump.vcd
+else
+	echo "Dump file does not exist"
+	exit 1
+fi
