@@ -4,11 +4,11 @@
 `define     ADDR_WIDTH              32
 `define     DATA_WIDTH              32
 
-`define     AXI_LEN                 {`ID_WIDTH+`ADDR_WIDTH+`DATA_WIDTH}  
+`define     AXI_LEN                 {`ID_WIDTH+`ADDR_WIDTH+`DATA_WIDTH}
 
 
 
-module  FIFO_TB;
+module  RegisterSlice_Fully_TB;
 
     localparam  CLK_PERIOD              = 10;
 
@@ -20,17 +20,17 @@ module  FIFO_TB;
     //----------------------------------------------------------
 
     logic                                 clk;
-    logic                                 rstn;    
-    
+    logic                                 rstn;
+
     initial begin
         clk                             =   1'b1;
-        forever 
+        forever
             #(CLK_PERIOD/2) clk         =   ~clk;
     end
 
-    initial begin  
+    initial begin
         rstn                            =   1'b0;
-        repeat (3) @(posedge clk);  
+        repeat (3) @(posedge clk);
         rstn                            =   1'b1;
     end
 
@@ -43,16 +43,16 @@ module  FIFO_TB;
 
     logic                                   svalid;
     wire                                    sready;
-    wire                                    dvalid; 
+    wire                                    dvalid;
     logic                                   dready;
-    
-    
 
-    full_register_slice    udt(.aclk(clk),.areset_n(rstn),
+
+
+    RegisterSlice_Fully    udt(.aclk(clk),.areset_n(rstn),
                    .prev_stage_data_i(in_AXI),.prev_stage_ready_o(sready),.prev_stage_valid_i(svalid),
                    .next_stage_data_o(out_AXI),.next_stage_ready_i(dready),.next_stage_valid_o(dvalid));
 
-    initial begin 
+    initial begin
         svalid = 1'b0;
         dready = 1'b0;
 
