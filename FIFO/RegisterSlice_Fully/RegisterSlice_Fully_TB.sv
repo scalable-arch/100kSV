@@ -48,7 +48,7 @@ module  RegisterSlice_Fully_TB;
 
 
 
-    full_register_slice    udt(.aclk(clk),.areset_n(rstn),
+    RegisterSlice_Fully    udt(.aclk(clk),.areset_n(rstn),
                    .prev_stage_data_i(in_AXI),.prev_stage_ready_o(sready),.prev_stage_valid_i(svalid),
                    .next_stage_data_o(out_AXI),.next_stage_ready_i(dready),.next_stage_valid_o(dvalid));
 
