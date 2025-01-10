@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source ../../scripts/common.sh
+
+function print_help() {
+    echo "Usage: ./run.synthesis design_name"
+    exit 1
+}
+
+export LAB_PATH="$PWD/../"
+export LIBLIST_PATH="$LAB_PATH/SYN/lib_container.tcl"
+export FILELIST_RTL="$LAB_PATH/RTL/filelist.f"
+
+echo "Selected DMAC_TOP"
+SCRIPT_PATH="$LAB_PATH/SYN/script.tcl"
+RUN_DIR="OUTPUT_TOP"
+
+echo "Cleaning up the old directory"
+rm -rf $RUN_DIR
+echo "Creating a new directory"
+mkdir -p $RUN_DIR
+cd $RUN_DIR
+echo "Synthesizing"
+
+$DC_CMD $DC_OPTIONS -f $SCRIPT_PATH | tee ./dc_shell.log
+echo "Synthesis Completed"
+rm -rf *.pvl *.syn *.mr command.log default.svf

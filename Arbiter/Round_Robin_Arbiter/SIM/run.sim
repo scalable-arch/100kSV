@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ../../scripts/common.sh
+
+if [ -e $RUN_DIR/simv ];
+then
+	cd $RUN_DIR
+	./simv
+else
+	echo "Compile file does not exist"
+	exit 1
+fi

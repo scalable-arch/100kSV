@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ../../scripts/common.sh
+
+export LAB_PATH="$PWD/../"
+FILELIST_TB="../TB/filelist.f"
+FILELIST_RTL="../../RTL/filelist.f"
+
+cd $RUN_DIR
+$VERDI_CMD $VERDI_OPTIONS -f $FILELIST_TB -f $FILELIST_RTL

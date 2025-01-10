@@ -1,0 +1,2 @@
+$LAB_PATH/SIM/TB/timescale.v
+$LAB_PATH/SIM/TB/ARBITER_TB_TOP.sv
