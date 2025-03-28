@@ -10,17 +10,17 @@ https://www.synopsys.com/dw/buildingblock.php
 https://hdlbits.01xz.net/wiki/Main_Page
 
 # Module 1: Structural SystemVerilog (Transistor-level)
-- [```Inverter```](https://github.com/scalable-arch/100kSV/tree/main/TR/INV)
-- [```NAND2```](https://github.com/scalable-arch/100kSV/tree/main/TR/NAND2)
-- [```NOR2```](https://github.com/scalable-arch/100kSV/tree/main/TR/NOR2)
-- [```AND2```](https://github.com/scalable-arch/100kSV/tree/main/TR/AND2)
-- [```OR2```](https://github.com/scalable-arch/100kSV/tree/main/TR/OR2)
+- [```Inverter```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/INV)
+- [```NAND2```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/NAND2)
+- [```NOR2```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/NOR2)
+- [```AND2```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/AND2)
+- [```OR2```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/OR2)
 - XOR2
 - XNOR2
-- [```AND-OR-Inverter 21```](https://github.com/scalable-arch/100kSV/tree/main/TR/AOI21)
+- [```AND-OR-Inverter 21```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/AOI21)
 - OR-AND-Inverter
-- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/TR/MUX2)
-- [```1:2 demux```](https://github.com/scalable-arch/100kSV/tree/main/TR/DEMUX2)
+- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/MUX2)
+- [```1:2 demux```](https://github.com/scalable-arch/100kSV/tree/main/TR-level/DEMUX2)
 - RS latch
 - D flip flop
 - JK flip flop
@@ -28,10 +28,10 @@ https://hdlbits.01xz.net/wiki/Main_Page
 # Module 2: Structural SystemVerilog (Gate-level)
 - XOR2
 - XNOR2
-- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/Gate/MUX2)
+- [```2:1 Mux```](https://github.com/scalable-arch/100kSV/tree/main/Gate-level/MUX2)
 - 1:2 demux
-- [```Half-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/HALF_ADDER)
-- [```Full-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate/FULL_ADDER)
+- [```Half-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate-level/HALF_ADDER)
+- [```Full-adder```](https://github.com/scalable-arch/100kSV/tree/main/Gate-level/FULL_ADDER)
 - RS latch
 - D flip flop
 - JK flip flop
