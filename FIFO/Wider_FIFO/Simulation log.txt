@@ -1,0 +1,224 @@
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS/VCS-MX Release Notes
+
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2_Full64; Runtime version N-2017.12-SP2_Full64;  Oct 23 19:26 2023
+VCD+ Writer N-2017.12-SP2_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
+The file '/home/wjdgns3758/CXL_FIFO_202309/100kSV/FIFO/Wider_FIFO/inter.vpd' was opened successfully.
+                  80ns, pushing 11b70f21
+                 100ns, peeking expected data: 11b70f21
+                 100ns, popping expected data: 11b70f21
+                 120ns, peeking matching data: 11b70f21
+                 140ns, pushing 1b4ff6d8
+                 140ns, peeking expected data: 1b4ff6d8
+                 140ns, popping expected data: 1b4ff6d8
+                 160ns, peeking matching data: 1b4ff6d8
+                 180ns, pushing bc18c4bb
+                 180ns, peeking expected data: bc18c4bb
+                 200ns, peeking expected data: bc18c4bb
+                 210ns, pushing 1c8d0f46
+                 220ns, peeking expected data: bc18c4bb
+                 240ns, peeking expected data: bc18c4bb
+                 250ns, pushing 52f80b1f
+                 260ns, peeking expected data: bc18c4bb
+                 260ns, popping expected data: bc18c4bb
+                 280ns, peeking matching data: bc18c4bb
+                 280ns, peeking expected data: 1c8d0f46
+                 280ns, popping expected data: 1c8d0f46
+                 300ns, pushing eda92013
+                 300ns, peeking matching data: 1c8d0f46
+                 300ns, peeking expected data: 52f80b1f
+                 320ns, peeking expected data: 52f80b1f
+                 320ns, popping expected data: 52f80b1f
+                 330ns, pushing fc51db8d
+                 340ns, peeking matching data: 52f80b1f
+                 340ns, peeking expected data: eda92013
+                 360ns, peeking expected data: eda92013
+                 360ns, popping expected data: eda92013
+                 370ns, pushing 888b966f
+                 380ns, peeking matching data: eda92013
+                 380ns, peeking expected data: fc51db8d
+                 380ns, popping expected data: fc51db8d
+                 400ns, peeking matching data: fc51db8d
+                 400ns, peeking expected data: 888b966f
+                 420ns, pushing deb4371f
+                 440ns, peeking expected data: 888b966f
+                 460ns, peeking expected data: 888b966f
+                 470ns, pushing d1600460
+                 480ns, peeking expected data: 888b966f
+                 480ns, popping expected data: 888b966f
+                 500ns, pushing ddb3abd0
+                 500ns, peeking matching data: 888b966f
+                 500ns, peeking expected data: deb4371f
+                 520ns, peeking expected data: deb4371f
+                 520ns, popping expected data: deb4371f
+                 540ns, peeking matching data: deb4371f
+                 540ns, peeking expected data: d1600460
+                 560ns, pushing b7a5604f
+                 560ns, peeking expected data: d1600460
+                 560ns, popping expected data: d1600460
+                 580ns, peeking matching data: d1600460
+                 580ns, peeking expected data: ddb3abd0
+                 600ns, peeking expected data: ddb3abd0
+                 620ns, peeking expected data: ddb3abd0
+                 640ns, pushing 745f46de
+                 640ns, peeking expected data: ddb3abd0
+                 660ns, peeking expected data: ddb3abd0
+                 670ns, pushing 693303b7
+                 680ns, peeking expected data: ddb3abd0
+                 700ns, peeking expected data: ddb3abd0
+                 720ns, peeking expected data: ddb3abd0
+                 730ns, pushing cbe64358
+                 740ns, peeking expected data: ddb3abd0
+                 740ns, popping expected data: ddb3abd0
+                 760ns, peeking matching data: ddb3abd0
+                 760ns, peeking expected data: b7a5604f
+                 760ns, popping expected data: b7a5604f
+                 780ns, peeking matching data: b7a5604f
+                 780ns, peeking expected data: 745f46de
+                 800ns, peeking expected data: 745f46de
+                 810ns, pushing 251aea7c
+                 820ns, peeking expected data: 745f46de
+                 840ns, peeking expected data: 745f46de
+                 860ns, peeking expected data: 745f46de
+                 860ns, popping expected data: 745f46de
+                 880ns, peeking matching data: 745f46de
+                 880ns, peeking expected data: 693303b7
+                 890ns, pushing f4d254eb
+                 900ns, peeking expected data: 693303b7
+                 900ns, popping expected data: 693303b7
+                 920ns, pushing 4e156825
+                 920ns, peeking matching data: 693303b7
+                 920ns, peeking expected data: cbe64358
+                 920ns, popping expected data: cbe64358
+                 940ns, peeking matching data: cbe64358
+                 940ns, peeking expected data: 251aea7c
+                 940ns, popping expected data: 251aea7c
+                 950ns, pushing 0955bb95
+                 960ns, peeking matching data: 251aea7c
+                 960ns, peeking expected data: f4d254eb
+                 980ns, peeking expected data: f4d254eb
+                 980ns, popping expected data: f4d254eb
+                 990ns, pushing b0099d7a
+                1000ns, peeking matching data: f4d254eb
+                1000ns, peeking expected data: 4e156825
+                1020ns, peeking expected data: 4e156825
+                1040ns, peeking expected data: 4e156825
+                1040ns, popping expected data: 4e156825
+                1060ns, pushing 72d5138f
+                1060ns, peeking matching data: 4e156825
+                1060ns, peeking expected data: 0955bb95
+                1060ns, popping expected data: 0955bb95
+                1080ns, peeking matching data: 0955bb95
+                1080ns, peeking expected data: b0099d7a
+                1100ns, peeking expected data: b0099d7a
+                1100ns, popping expected data: b0099d7a
+                1110ns, pushing bb63630f
+                1120ns, peeking matching data: b0099d7a
+                1120ns, peeking expected data: 72d5138f
+                1140ns, peeking expected data: 72d5138f
+                1140ns, popping expected data: 72d5138f
+                1160ns, peeking matching data: 72d5138f
+                1160ns, peeking expected data: bb63630f
+                1160ns, popping expected data: bb63630f
+                1180ns, peeking matching data: bb63630f
+                1210ns, pushing 0339a627
+                1240ns, peeking expected data: 0339a627
+                1250ns, pushing 0526bd51
+                1260ns, peeking expected data: 0339a627
+                1260ns, popping expected data: 0339a627
+                1280ns, peeking matching data: 0339a627
+                1280ns, peeking expected data: 0526bd51
+                1290ns, pushing 2c919b35
+                1300ns, peeking expected data: 0526bd51
+                1300ns, popping expected data: 0526bd51
+                1320ns, pushing e496cc9d
+                1320ns, peeking matching data: 0526bd51
+                1320ns, peeking expected data: 2c919b35
+                1340ns, peeking expected data: 2c919b35
+                1340ns, popping expected data: 2c919b35
+                1360ns, peeking matching data: 2c919b35
+                1360ns, peeking expected data: e496cc9d
+                1360ns, popping expected data: e496cc9d
+                1380ns, peeking matching data: e496cc9d
+                1390ns, pushing 96025407
+                1420ns, peeking expected data: 96025407
+                1420ns, popping expected data: 96025407
+                1430ns, pushing 0ace5fe2
+                1440ns, peeking matching data: 96025407
+                1440ns, peeking expected data: 0ace5fe2
+                1440ns, popping expected data: 0ace5fe2
+                1460ns, peeking matching data: 0ace5fe2
+                1480ns, pushing 6d0b478d
+                1480ns, peeking expected data: 6d0b478d
+                1480ns, popping expected data: 6d0b478d
+                1500ns, peeking matching data: 6d0b478d
+                1510ns, pushing 603c1958
+                1540ns, peeking expected data: 603c1958
+                1540ns, popping expected data: 603c1958
+                1550ns, pushing 46c8aec9
+                1560ns, peeking matching data: 603c1958
+                1560ns, peeking expected data: 46c8aec9
+                1580ns, pushing 0559b09d
+                1600ns, peeking expected data: 46c8aec9
+                1600ns, popping expected data: 46c8aec9
+                1620ns, peeking matching data: 46c8aec9
+                1620ns, peeking expected data: 0559b09d
+                1640ns, peeking expected data: 0559b09d
+                1650ns, pushing f1aec0a2
+                1660ns, peeking expected data: 0559b09d
+                1680ns, pushing cb4eff96
+                1680ns, peeking expected data: 0559b09d
+                1700ns, peeking expected data: 0559b09d
+                1700ns, popping expected data: 0559b09d
+                1710ns, pushing ba82cd87
+                1720ns, peeking matching data: 0559b09d
+                1720ns, peeking expected data: f1aec0a2
+                1740ns, peeking expected data: f1aec0a2
+                1760ns, pushing f7ed5045
+                1760ns, peeking expected data: f1aec0a2
+                1780ns, peeking expected data: f1aec0a2
+                1800ns, pushing 932e343f
+                1800ns, peeking expected data: f1aec0a2
+                1820ns, peeking expected data: f1aec0a2
+                1820ns, popping expected data: f1aec0a2
+                1840ns, pushing a8d6d762
+                1840ns, peeking matching data: f1aec0a2
+                1840ns, peeking expected data: cb4eff96
+                1860ns, peeking expected data: cb4eff96
+                1880ns, peeking expected data: cb4eff96
+                1880ns, popping expected data: cb4eff96
+                1900ns, peeking matching data: cb4eff96
+                1900ns, peeking expected data: ba82cd87
+                1900ns, popping expected data: ba82cd87
+                1920ns, peeking matching data: ba82cd87
+                1920ns, peeking expected data: f7ed5045
+                1920ns, popping expected data: f7ed5045
+                1940ns, peeking matching data: f7ed5045
+                1940ns, peeking expected data: 932e343f
+                1960ns, peeking expected data: 932e343f
+                1980ns, peeking expected data: 932e343f
+                1980ns, popping expected data: 932e343f
+                2000ns, peeking matching data: 932e343f
+                2000ns, peeking expected data: a8d6d762
+                2000ns, popping expected data: a8d6d762
+                2020ns, pushing 99355336
+                2020ns, peeking matching data: a8d6d762
+                2040ns, peeking expected data: 99355336
+                2060ns, peeking expected data: 99355336
+                2080ns, peeking expected data: 99355336
+                2080ns, popping expected data: 99355336
+                2100ns, pushing 1b67eed0
+                2100ns, peeking matching data: 99355336
+                2100ns, peeking expected data: 1b67eed0
+                2120ns, peeking expected data: 1b67eed0
+                2140ns, peeking expected data: 1b67eed0
+                2160ns, peeking expected data: 1b67eed0
+                2160ns, popping expected data: 1b67eed0
+                2180ns, peeking matching data: 1b67eed0
+$finish called from file "FIFO_TB.sv", line 161.
+$finish at simulation time               277000
+Simulation complete, time is 2770000 ps.
